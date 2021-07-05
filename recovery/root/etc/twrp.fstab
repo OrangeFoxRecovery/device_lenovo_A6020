@@ -2,23 +2,30 @@
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-/boot           emmc    /dev/block/bootdevice/by-name/boot            flags=display="Boot Image"
-/system         ext4    /dev/block/bootdevice/by-name/system          flags=display="System"
-/system_image   emmc    /dev/block/bootdevice/by-name/system          flags=flashimg=1;display="System Image";backup=0
-/data           ext4    /dev/block/bootdevice/by-name/userdata        flags=encryptable=footer;length=-16384;display="Data"
-/cache          ext4    /dev/block/bootdevice/by-name/cache           flags=display="Cache"
-/persist        ext4    /dev/block/bootdevice/by-name/persist         flags=mounttodecrypt;backup=1;display="Persist"
-/firmware       vfat    /dev/block/bootdevice/by-name/modem           flags=mounttodecrypt;backup=1;display="Firmware"
-/recovery       emmc    /dev/block/bootdevice/by-name/recovery        flags=display="Recovery";backup=1
+/boot           emmc    /dev/block/bootdevice/by-name/boot            flags=display="Boot";backup=1;flashimg=1
+/recovery       emmc    /dev/block/bootdevice/by-name/recovery        flags=display="Recovery";backup=1;flashimg=1
+/cache          ext4    /dev/block/bootdevice/by-name/cache           flags=display="Cache";wipeingui
+
+/system         ext4    /dev/block/bootdevice/by-name/system          flags=display="System";backup=1;wipeingui
+/system_image   emmc    /dev/block/bootdevice/by-name/system          flags=display="System Image";backup=1;flashimg=1
+/data           f2fs    /dev/block/bootdevice/by-name/userdata        flags=encryptable=footer;length=-16384;display="Data"
+
+# Internal Storage
+/storage        f2fs    /data/media/0                                 flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
+
+/persist        ext4    /dev/block/bootdevice/by-name/persist         flags=mounttodecrypt;backup=0;display="Persist"
+/persist_image  emmc    /dev/block/bootdevice/by-name/persist         flags=display="Persist Image";backup=1;flashimg=1
+/firmware       vfat    /dev/block/bootdevice/by-name/modem           flags=mounttodecrypt;backup=0;display="Firmware"
+/firmware_image emmc    /dev/block/bootdevice/by-name/modem           flags=display="Firmware Image";backup=1;flashimg=1
 
 /efs1           emmc    /dev/block/bootdevice/by-name/modemst1        flags=backup=1;display="EFS"
 /efs2           emmc    /dev/block/bootdevice/by-name/modemst2        flags=backup=1;subpartitionof=/efs1
 
 /aboot          emmc    /dev/block/bootdevice/by-name/aboot           flags=backup=1;display="Bootloader"
-/hyp            emmc    /dev/block/bootdevice/by-name/hyp             flags=backup=1;subpartitionof=/aboot
-/rpm            emmc    /dev/block/bootdevice/by-name/rpm             flags=backup=1;subpartitionof=/aboot
-/sbl1           emmc    /dev/block/bootdevice/by-name/sbl1            flags=backup=1;subpartitionof=/aboot
-/tz             emmc    /dev/block/bootdevice/by-name/tz              flags=backup=1;subpartitionof=/aboot
+/hyp            emmc    /dev/block/bootdevice/by-name/hyp             flags=backup=0;subpartitionof=/aboot
+/rpm            emmc    /dev/block/bootdevice/by-name/rpm             flags=backup=0;subpartitionof=/aboot
+/sbl1           emmc    /dev/block/bootdevice/by-name/sbl1            flags=backup=0;subpartitionof=/aboot
+/tz             emmc    /dev/block/bootdevice/by-name/tz              flags=display="TimeZone";backup=1;subpartitionof=/aboot
 
 /splash         emmc    /dev/block/bootdevice/by-name/splash          flags=backup=1;display="Splash";flashimg=1
 /misc           emmc    /dev/block/bootdevice/by-name/misc            flags=backup=1;display="Misc"
@@ -27,5 +34,6 @@
 /oem            emmc    /dev/block/bootdevice/by-name/oem             flags=backup=1;display="OEM"
 /config         emmc    /dev/block/bootdevice/by-name/config          flags=backup=1;display="Config"
 
-/external_sd    auto    /dev/block/mmcblk1p1    /dev/block/mmcblk1    flags=display="MicroSD Card";storage;wipeingui;removable
-/usb_otg        auto    /dev/block/sda1         /dev/block/sda        flags=display="USB-OTG";storage;wipeingui;removable
+# External Storage
+/sdcard1        auto    /dev/block/mmcblk1p1    /dev/block/mmcblk1    flags=display="MicroSD Card";storage;wipeingui;removable
+/usb_otg        auto    /dev/block/sda1         /dev/block/sda        flags=display="USB-Storage";storage;wipeingui;removable
