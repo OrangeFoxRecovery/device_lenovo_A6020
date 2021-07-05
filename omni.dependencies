@@ -1,8 +1,0 @@
-[
-  {
-    "remote": "github",
-    "repository": "ArrowOS-Devices/android_kernel_lenovo_msm8916",
-    "target_path": "kernel/lenovo/msm8916",
-    "revision": "twrp-kernel"
-  }
-]
