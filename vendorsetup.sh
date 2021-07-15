@@ -87,7 +87,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
 
 	# quick backup defaults
-    export OF_QUICK_BACKUP_LIST="/boot;/data;/system_image;/vendor_image;"
+    export OF_QUICK_BACKUP_LIST="/boot;/data;/system_image;"
 
 	# Run a Process After Formatting Data to Work-Around MTP Issues
 	export OF_RUN_POST_FORMAT_PROCESS=1
