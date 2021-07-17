@@ -57,6 +57,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export OF_MAINTAINER="Sushrut Gupta"
     export FOX_VERSION="R11.1"
     export OF_MAINTAINER_AVATAR="misc/Sushrut1101.png"
+    export FOX_BUILD_TYPE="Beta"
 
 	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1510672800"; # Tue Nov 14 15:20:00 GMT 2017
 	export FOX_USE_BASH_SHELL=1
