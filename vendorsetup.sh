@@ -38,6 +38,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export ALLOW_MISSING_DEPENDENCIES=true
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 	
+	# Device Tree Path
+	export DEVICE_PATH="device/lenovo/A6020"
+	export INCLUDE_PATH="$DEVICE_PATH/include"
+	
 	export FOX_R11=1
 	export OF_PATCH_AVB20=1
 	export OF_USE_MAGISKBOOT=1
@@ -52,11 +56,12 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_DELETE_AROMAFM=1
     export OF_USE_SYSTEM_FINGERPRINT=1
     export OF_CHECK_OVERWRITE_ATTEMPTS=1
+    export FOX_USE_SPECIFIC_MAGISK_ZIP=$INCLUDE_PATH/Magisk-v21.4.zip
 
     # About Settings
     export OF_MAINTAINER="Sushrut Gupta"
     export FOX_VERSION="R11.1"
-    export OF_MAINTAINER_AVATAR="misc/Sushrut1101.png"
+    export OF_MAINTAINER_AVATAR="$INCLUDE_PATH/Sushrut1101.png"
     export FOX_BUILD_TYPE="Beta"
 
 	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1510672800"; # Tue Nov 14 15:20:00 GMT 2017
