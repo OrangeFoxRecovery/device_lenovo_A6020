@@ -60,7 +60,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
     # About Settings
     export OF_MAINTAINER="Sushrut Gupta"
-    export FOX_VERSION="R11.1"
+    export FOX_VERSION="R11.1_1"
     export OF_MAINTAINER_AVATAR="$INCLUDE_PATH/Sushrut1101.png"
     export FOX_BUILD_TYPE="Stable"
 
