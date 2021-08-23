@@ -2,6 +2,7 @@
 # Copyright (C) 2015-2016 The CyanogenMod Project
 # Copyright (C) 2017 The LineageOS Project
 # Copyright (c) 2020 Team Win Recovery Project
+# Copyright (c) 2021 OrangeFox Recovery Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -78,7 +79,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/etc/twrp.fstab
 LZMA_RAMDISK_TARGETS := recovery
 
 # TWRP Configuration
-TW_DEVICE_VERSION := GHR
 TW_THEME := portrait_hdpi
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255
