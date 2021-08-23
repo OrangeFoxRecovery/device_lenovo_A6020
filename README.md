@@ -1,4 +1,4 @@
-TWRP device tree for the Lenovo Vibe K5/K5 Plus (A6020)
+OrangeFox Recovery Device Tree for the Lenovo Vibe K5/K5 Plus (A6020)
 ======================================================
 
 The Lenovo Vibe K5/K5 Plus (codenamed _"A6020"_) is a series of mid-range smartphones from Lenovo.
